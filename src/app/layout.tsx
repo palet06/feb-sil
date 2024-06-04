@@ -1,0 +1,35 @@
+import type { Metadata } from "next";
+import { Marcellus, Urbanist } from "next/font/google";
+import "./globals.css";
+
+import { useEffect, useState } from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+const marcellus = Marcellus({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-marcellus",
+});
+
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-urbanist",
+});
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="tr" className="scroll-smooth">
+      <body className={`${marcellus.variable} ${urbanist.variable}`}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
+    </html>
+  );
+}
